@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Dia da Princesa - Gabriela 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #250421;
+      --bg-mid: #6e1053;
+      --bg-pink: #c92678;
+      --pink-neon: #ff4fa3;
+      --pink-soft: #ffcce5;
+      --gold: #f5c97b;
+      --gold-dark: #c88b3a;
+      --cream: #fff5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at 50% 20%, #9b186a 0%, #4d0a3b 48%, #21031b 100%);
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 14px 40px;
+    }
+
+    /* Fundo mágico com brilho, castelo e estrelas */
+    .magic-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bokeh {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 138, 203, 0.45) 0%, rgba(255, 79, 163, 0) 70%);
+      animation: floatBokeh 12s infinite ease-in-out alternate;
+    }
+
+    @keyframes floatBokeh {
+      0% { transform: translateY(0) scale(1); opacity: 0.4; }
+      100% { transform: translateY(-40px) scale(1.2); opacity: 0.85; }
+    }
+
+    .castle-bg {
+      position: fixed;
+      bottom: 0;
+      right: -30px;
+      width: min(460px, 85vw);
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+      filter: drop-shadow(0 0 25px rgba(255, 150, 210, 0.5));
+    }
+
+    /* Corações neon de fundo */
+    .bg-neon-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+      filter: drop-shadow(0 0 8px #ff4fa3);
+      animation: pulseFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes pulseFloat {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.35; }
+      50% { transform: translateY(-16px) scale(1.1); opacity: 0.75; }
+    }
+
+    /* Container principal */
+    .wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* Cabeçalho Real (Coração + Coroa) */
+    .royal-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeInDown 1s ease;
+    }
+
+    .crown-trigger {
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 0 12px rgba(255, 175, 220, 0.9));
+    }
+    .crown-trigger:active {
+      transform: scale(0.9);
+    }
+
+    .heart-badge {
+      position: relative;
+      padding: 20px 36px 24px;
+      border-radius: 50px;
+      background: radial-gradient(circle at top, rgba(255, 79, 163, 0.32), rgba(75, 8, 52, 0.72));
+      border: 2px solid rgba(255, 153, 210, 0.85);
+      box-shadow: 0 0 25px rgba(255, 79, 163, 0.65), inset 0 0 20px rgba(255, 130, 195, 0.35);
+      backdrop-filter: blur(6px);
+      margin-top: -6px;
+    }
+
+    .heart-badge h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.3rem, 6vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: #fff;
+      text-shadow: 0 0 12px #ff4fa3, 0 0 24px #ff2e93;
+    }
+
+    .heart-badge .date-line {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: #ffd9ec;
+      margin-top: 4px;
+    }
+
+    .subtitle-names {
+      margin-top: 10px;
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.7rem, 4.5vw, 2.3rem);
+      color: #ffe2f1;
+      text-shadow: 0 0 10px rgba(255, 79, 163, 0.8);
+    }
+
+    /* ================= ETAPA 1: ENVELOPE ================= */
+    #envelope-stage {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-top: 6px;
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    #envelope-stage.hidden-stage {
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+      display: none;
+    }
+
+    .prompt-text {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      text-align: center;
+      color: #ffe5f3;
+      text-shadow: 0 0 10px rgba(255, 79, 163, 0.85);
+      max-width: 440px;
+    }
+
+    /* Caixa do contador antes das 00:02 */
+    .countdown-box {
+      background: rgba(55, 6, 42, 0.78);
+      border: 1.5px solid rgba(255, 130, 196, 0.75);
+      border-radius: 20px;
+      padding: 14px 24px;
+      text-align: center;
+      box-shadow: 0 0 22px rgba(255, 64, 155, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .countdown-box .cd-label {
+      font-size: 0.85rem;
+      color: #ffc5e3;
+      margin-bottom: 6px;
+    }
+
+    .countdown-timer {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 12px #ff4fa3;
+    }
+
+    .countdown-box.unlocked {
+      display: none;
+    }
+
+    /* Envelope 3D Rosa */
+    .envelope-scene {
+      position: relative;
+      width: min(350px, 86vw);
+      height: min(225px, 55vw);
+      perspective: 1000px;
+      cursor: pointer;
+      margin: 14px 0;
+      transition: transform 0.3s ease;
+    }
+
+    .envelope-scene:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    .envelope-scene.shake {
+      animation: gentleShake 0.45s ease;
+    }
+
+    @keyframes gentleShake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px) rotate(-1.5deg); }
+      40% { transform: translateX(8px) rotate(1.5deg); }
+      60% { transform: translateX(-6px); }
+      80% { transform: translateX(6px); }
+    }
+
+    /* Rosas decorativas ao redor do envelope */
+    .env-roses-left, .env-roses-right {
+      position: absolute;
+      bottom: -14px;
+      width: 96px;
+      pointer-events: none;
+      z-index: 1;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.45));
+    }
+    .env-roses-left { left: -34px; }
+    .env-roses-right { right: -34px; transform: scaleX(-1); }
+
+    .envelope-body {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #ff7eb9 0%, #f34b98 55%, #cf2575 100%);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 79, 163, 0.55), inset 0 2px 10px rgba(255, 225, 240, 0.65);
+      border: 2px solid #ffb3d9;
+      z-index: 2;
+      overflow: visible;
+    }
+
+    /* Dobras internas do envelope */
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .envelope-pocket::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top right, #e53687 49.5%, transparent 50.5%),
+                  linear-gradient(to top left, #d92b7c 49.5%, transparent 50.5%);
+      opacity: 0.92;
+    }
+
+    /* Aba superior do envelope */
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      transform-origin: top center;
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .envelope-flap-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #ff99ca 0%, #f44a99 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
+      box-shadow: 0 6px 16px rgba(100, 0, 50, 0.35);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 16px;
+    }
+
+    .envelope-scene.opening .envelope-flap {
+      transform: rotateX(175deg);
+      z-index: 1;
+    }
+
+    /* Coração joia no centro do envelope */
+    .gem-seal {
+      position: absolute;
+      top: 52%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      filter: drop-shadow(0 0 14px rgba(255, 210, 120, 0.95));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .envelope-scene.opening .gem-seal {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0;
+    }
+
+    .lock-badge {
+      margin-top: -10px;
+      background: #2f0424;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .lock-badge.hidden {
+      display: none;
+    }
+
+    .tap-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #ffdff0;
+      text-shadow: 0 0 10px #ff4fa3;
+      animation: pulseHint 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseHint {
+      0%, 100% { transform: scale(1); opacity: 0.85; }
+      50% { transform: scale(1.06); opacity: 1; }
+    }
+
+    .locked-toast {
+      min-height: 24px;
+      font-size: 0.9rem;
+      color: #ffd3eb;
+      text-align: center;
+      text-shadow: 0 0 8px #ff2d8b;
+    }
+
+    /* ================= ETAPA 2: LIVRO DE PRINCESA ABERTO ================= */
+    #book-stage {
+      display: none;
+      width: 100%;
+      max-width: 900px;
+      opacity: 0;
+      transform: scale(0.82) translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      margin-top: 8px;
+    }
+
+    #book-stage.revealed {
+      display: block;
+    }
+
+    #book-stage.animate-in {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .storybook {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: linear-gradient(135deg, #ffa8d4 0%, #f566ad 50%, #ff9dce 100%);
+      padding: 16px;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(255, 79, 163, 0.65);
+      border: 3px solid #ffd4ea;
+      gap: 10px;
+    }
+
+    /* Lombada central do livro */
+    .storybook::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      left: 50%;
+      width: 18px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, rgba(160, 20, 88, 0.35), rgba(255, 225, 240, 0.45), rgba(160, 20, 88, 0.35));
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .book-page {
+      background: linear-gradient(180deg, #fff5fa 0%, #ffe6f2 100%);
+      border-radius: 16px;
+      padding: 24px 20px;
+      position: relative;
+      border: 2px solid var(--gold);
+      box-shadow: inset 0 0 25px rgba(255, 130, 190, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Cantoneiras douradas */
+    .corner-ornament {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+    .c-tl { top: 8px; left: 8px; }
+    .c-tr { top: 8px; right: 8px; transform: scaleX(-1); }
+    .c-bl { bottom: 8px; left: 8px; transform: scaleY(-1); }
+    .c-br { bottom: 8px; right: 8px; transform: scale(-1, -1); }
+
+    /* Página Esquerda: Moldura da Foto de Princesa */
+    .photo-frame-outer {
+      position: relative;
+      width: 100%;
+      max-width: 310px;
+      aspect-ratio: 3 / 4;
+      border-radius: 18px;
+      padding: 8px;
+      background: linear-gradient(145deg, #ffe2a8, #d48c3b, #ffdf9a);
+      box-shadow: 0 10px 28px rgba(170, 25, 95, 0.35), 0 0 20px rgba(255, 120, 190, 0.45);
+    }
+
+    .photo-crown-top {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      filter: drop-shadow(0 3px 8px rgba(180, 30, 100, 0.6));
+    }
+
+    .photo-frame-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 13px;
+      overflow: hidden;
+      background: radial-gradient(circle, #ff7eb9, #98165c);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-frame-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+      font-size: 0.9rem;
+      gap: 10px;
+    }
+
+    .photo-caption {
+      margin-top: 14px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.9rem;
+      color: #b51865;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Página Direita: Carta Romântica */
+    .letter-content {
+      color: #6b0f3e;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      padding: 8px 6px;
+    }
+
+    .letter-crown {
+      margin-bottom: 4px;
+    }
+
+    .letter-greeting {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 5vw, 2.8rem);
+      color: #c2186b;
+      margin-bottom: 10px;
+      text-align: left;
+      padding-left: 8px;
+    }
+
+    .letter-body {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.2vw, 1.06rem);
+      line-height: 1.65;
+      color: #5c1037;
+      margin-bottom: 14px;
+    }
+
+    .letter-body p + p {
+      margin-top: 12px;
+    }
+
+    .letter-highlight {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.75rem, 4vw, 2.15rem);
+      color: #d41c74;
+      margin: 14px 0 8px;
+      text-shadow: 0 0 8px rgba(255, 130, 190, 0.35);
+    }
+
+    .letter-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0;
+      color: #d41c74;
+    }
+    .letter-divider::before,
+    .letter-divider::after {
+      content: '';
+      height: 1.5px;
+      width: 55px;
+      background: linear-gradient(90deg, transparent, #e05396, transparent);
+    }
+
+    .letter-sign {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: #701443;
+      margin-top: 6px;
+    }
+
+    .letter-name {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.35rem;
+      color: #b51463;
+      line-height: 1.1;
+    }
+
+    /* Laço de cetim e rosas no livro */
+    .book-ribbon-bow {
+      position: absolute;
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.45));
+    }
+
+    .book-roses-bl, .book-roses-br {
+      position: absolute;
+      bottom: -18px;
+      width: 110px;
+      z-index: 6;
+      pointer-events: none;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
+    }
+    .book-roses-bl { left: -24px; }
+    .book-roses-br { right: -24px; transform: scaleX(-1); }
+
+    /* Botão extra de chuva de amor */
+    .love-actions {
+      margin-top: 34px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-love {
+      background: linear-gradient(135deg, #ff5aa8, #d41872);
+      color: #fff;
+      border: 2px solid #ffc6e3;
+      border-radius: 30px;
+      padding: 12px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(255, 64, 155, 0.55);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-love:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 12px 28px rgba(255, 64, 155, 0.75);
+    }
+    .btn-love:active {
+      transform: scale(0.96);
+    }
+
+    /* Partículas de corações rosas ao mover */
+    .floating-heart {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      user-select: none;
+      will-change: transform, opacity;
+      animation: flyHeart var(--dur, 1.5s) ease-out forwards;
+      filter: drop-shadow(0 0 8px rgba(255, 79, 163, 0.9));
+    }
+
+    @keyframes flyHeart {
+      0% {
+        transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+        opacity: 1;
+      }
+      60% {
+        opacity: 0.95;
+      }
+      100% {
+        transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, -90px))) scale(var(--sc, 1.2)) rotate(var(--rot, 20deg));
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsividade para celular */
+    @media (max-width: 768px) {
+      .storybook {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 12px;
+      }
+      .storybook::after {
+        display: none;
+      }
+      .book-ribbon-bow {
+        width: 110px;
+        bottom: -20px;
+      }
+      .book-roses-bl, .book-roses-br {
+        width: 82px;
+        bottom: -14px;
+      }
+      .book-roses-bl { left: -12px; }
+      .book-roses-br { right: -12px; }
+      .env-roses-left, .env-roses-right {
+        width: 72px;
+      }
+      .env-roses-left { left: -16px; }
+      .env-roses-right { right: -16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo Mágico -->
+  <div class="magic-bg" id="magicBg"></div>
+
+  <!-- Castelo Encantado em SVG -->
+  <svg class="castle-bg" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M35 255V165H60V130L72 100L84 130V165H105V110H120V70L135 28L150 70V110H165V65L182 15L199 65V110H214V140L226 108L238 140V165H265V255H35Z" fill="url(#castleGrad)"/>
+    <path d="M135 255V205C135 190 165 190 165 205V255H135Z" fill="#3a082b"/>
+    <circle cx="150" cy="118" r="7" fill="#ffd98a"/>
+    <circle cx="182" cy="96" r="6" fill="#ffd98a"/>
+    <circle cx="72" cy="152" r="4" fill="#ffd98a"/>
+    <circle cx="226" cy="160" r="4" fill="#ffd98a"/>
+    <defs>
+      <linearGradient id="castleGrad" x1="150" y1="15" x2="150" y2="255" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffb8e0"/>
+        <stop offset="0.5" stop-color="#d64a94"/>
+        <stop offset="1" stop-color="#4e0a39"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Corações Neon Decorativos -->
+  <svg class="bg-neon-heart" style="top: 12%; left: 6%; width: 42px;" viewBox="0 0 24 24" fill="none" stroke="#ff7ec3" stroke-width="1.6">
+    <path d="M12 21s-7-4.5-9.5-9C.5 8.5 2.8 4.5 6.5 4.5c2.1 0 4 1.1 5.5 2.8 1.5-1.7 3.4-2.8 5.5-2.8 3.7 0 6 4 4 7.5-2.5 4.5-9.5 9-9.5 9z"/>
+  </svg>
+  <svg class="bg-neon-heart" style="top: 22%; right: 8%; width: 54px; animation-delay: 1.4s;" viewBox="0 0 24 24" fill="none" stroke="#ff7ec3" stroke-width="1.6">
+    <path d="M12 21s-7-4.5-9.5-9C.5 8.5 2.8 4.5 6.5 4.5c2.1 0 4 1.1 5.5 2.8 1.5-1.7 3.4-2.8 5.5-2.8 3.7 0 6 4 4 7.5-2.5 4.5-9.5 9-9.5 9z"/>
+  </svg>
+  <svg class="bg-neon-heart" style="bottom: 18%; left: 9%; width: 36px; animation-delay: 2.5s;" viewBox="0 0 24 24" fill="none" stroke="#ff7ec3" stroke-width="1.6">
+    <path d="M12 21s-7-4.5-9.5-9C.5 8.5 2.8 4.5 6.5 4.5c2.1 0 4 1.1 5.5 2.8 1.5-1.7 3.4-2.8 5.5-2.8 3.7 0 6 4 4 7.5-2.5 4.5-9.5 9-9.5 9z"/>
+  </svg>
+
+  <div class="wrapper">
+
+    <!-- Cabeçalho -->
+    <header class="royal-header">
+      <div class="crown-trigger" id="secretCrown" title="Minha Princesa">
+        <svg width="56" height="40" viewBox="0 0 64 46" fill="none">
+          <path d="M8 36L4 12L20 23L32 6L44 23L60 12L56 36H8Z" stroke="#ffd2ec" stroke-width="3" fill="rgba(255, 79, 163, 0.35)" stroke-linejoin="round"/>
+          <circle cx="4" cy="10" r="3" fill="#ffd98e"/>
+          <circle cx="32" cy="4" r="3.5" fill="#ffd98e"/>
+          <circle cx="60" cy="10" r="3" fill="#ffd98e"/>
+          <rect x="8" y="38" width="48" height="4" rx="2" fill="#ffd2ec"/>
+        </svg>
+      </div>
+      <div class="heart-badge">
+        <h1>Dia da Princesa</h1>
+        <div class="date-line">18 / 11 / 2026</div>
+      </div>
+      <div class="subtitle-names">Gabriela, do seu namorado Kayko ♡</div>
+    </header>
+
+    <!-- ================= ETAPA 1: ENVELOPE (ANTES DE ABRIR) ================= -->
+    <section id="envelope-stage">
+      <p class="prompt-text">Há uma mensagem especial de amor para a minha princesa...</p>
+
+      <!-- Contagem Regressiva até 00:02 do dia 18/11/2026 -->
+      <div class="countdown-box" id="countdownBox">
+        <div class="cd-label">✨ Sua surpresa será liberada às 00:02 de quarta-feira ✨</div>
+        <div class="countdown-timer" id="countdownTimer">00:00:00</div>
+      </div>
+
+      <!-- Envelope Interativo -->
+      <div class="envelope-scene" id="envelopeScene">
+        <!-- Rosas à esquerda e direita -->
+        <svg class="env-roses-left" viewBox="0 0 120 110" fill="none">
+          <path d="M15 95 C5 75, 25 55, 45 70 C35 88, 25 98, 15 95Z" fill="#3a7d44"/>
+          <path d="M75 95 C95 85, 100 60, 75 65 C65 78, 65 92, 75 95Z" fill="#2d6636"/>
+          <circle cx="42" cy="70" r="26" fill="#d81b60"/>
+          <circle cx="42" cy="70" r="19" fill="#ec407a"/>
+          <path d="M32 68 C32 58, 52 58, 52 68 C52 78, 36 80, 36 68 C36 62, 46 62, 46 68" stroke="#880e4f" stroke-width="2.5" fill="none"/>
+          <circle cx="72" cy="82" r="18" fill="#c2185b"/>
+          <circle cx="72" cy="82" r="12" fill="#f06292"/>
+          <circle cx="24" cy="48" r="16" fill="#e91e63"/>
+          <circle cx="24" cy="48" r="10" fill="#f48fb1"/>
+        </svg>
+
+        <svg class="env-roses-right" viewBox="0 0 120 110" fill="none">
+          <path d="M15 95 C5 75, 25 55, 45 70 C35 88, 25 98, 15 95Z" fill="#3a7d44"/>
+          <path d="M75 95 C95 85, 100 60, 75 65 C65 78, 65 92, 75 95Z" fill="#2d6636"/>
+          <circle cx="42" cy="70" r="26" fill="#d81b60"/>
+          <circle cx="42" cy="70" r="19" fill="#ec407a"/>
+          <path d="M32 68 C32 58, 52 58, 52 68 C52 78, 36 80, 36 68 C36 62, 46 62, 46 68" stroke="#880e4f" stroke-width="2.5" fill="none"/>
+          <circle cx="72" cy="82" r="18" fill="#c2185b"/>
+          <circle cx="72" cy="82" r="12" fill="#f06292"/>
+          <circle cx="24" cy="48" r="16" fill="#e91e63"/>
+          <circle cx="24" cy="48" r="10" fill="#f48fb1"/>
+        </svg>
+
+        <div class="envelope-body">
+          <div class="envelope-pocket"></div>
+
+          <!-- Aba superior -->
+          <div class="envelope-flap">
+            <div class="envelope-flap-inner">
+              <svg width="42" height="28" viewBox="0 0 64 46" fill="none">
+                <path d="M8 36L4 12L20 23L32 6L44 23L60 12L56 36H8Z" stroke="#ffe5f3" stroke-width="3" fill="rgba(255,255,255,0.2)" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Lacração com Coração Rubi Rosa -->
+          <div class="gem-seal">
+            <svg width="64" height="58" viewBox="0 0 64 58" fill="none">
+              <path d="M32 54C32 54 6 38 6 19C6 10 13 4 21 4C26 4 30 7 32 11C34 7 38 4 43 4C51 4 58 10 58 19C58 38 32 54 32 54Z" fill="url(#gemGrad)" stroke="#f7cb77" stroke-width="3"/>
+              <path d="M32 14L44 22L32 45L20 22L32 14Z" fill="rgba(255,255,255,0.28)"/>
+              <path d="M16 14L24 22L18 32" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+              <defs>
+                <linearGradient id="gemGrad" x1="12" y1="4" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ff6eb4"/>
+                  <stop offset="0.5" stop-color="#e50068"/>
+                  <stop offset="1" stop-color="#8b0042"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="lock-badge" id="lockBadge">🔒 Bloqueado</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tap-hint" id="tapHint">
+        <span>👆</span>
+        <span id="tapHintText">Aguardando 00:02 para abrir...</span>
+      </div>
+      <div class="locked-toast" id="lockedToast"></div>
+    </section>
+
+    <!-- ================= ETAPA 2: LIVRO REVELADO ================= -->
+    <section id="book-stage">
+      <div class="storybook">
+
+        <!-- PÁGINA ESQUERDA: FOTO DA PRINCESA -->
+        <div class="book-page">
+          <svg class="corner-ornament c-tl" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-tr" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-bl" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-br" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+
+          <div class="photo-frame-outer">
+            <svg class="photo-crown-top" width="54" height="36" viewBox="0 0 64 46" fill="none">
+              <path d="M8 36L4 12L20 23L32 6L44 23L60 12L56 36H8Z" fill="#ff4fa3" stroke="#f7cb77" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="32" cy="24" r="4" fill="#fff"/>
+            </svg>
+
+            <div class="photo-frame-inner">
+              <!-- Salve a foto dela de princesa na mesma pasta com o nome gabriela-princesa.jpg -->
+              <img
+                src="gabriela-princesa.jpg"
+                alt="Minha Princesa Gabriela"
+                onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='flex';"
+              />
+              <div class="photo-fallback" id="photoFallback">
+                <span style="font-size: 2.8rem;">👸🏻💖</span>
+                <span>Coloque a foto de princesa dela na mesma pasta com o nome:<br><strong>gabriela-princesa.jpg</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="photo-caption">Minha Princesa Gabriela</div>
+        </div>
+
+        <!-- PÁGINA DIREITA: DECLARAÇÃO DE AMOR -->
+        <div class="book-page">
+          <svg class="corner-ornament c-tl" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-tr" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-bl" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <svg class="corner-ornament c-br" viewBox="0 0 50 50" fill="none"><path d="M4 46V12C4 7 7 4 12 4H46M14 4C14 14 22 20 12 28C6 33 4 24 10 20" stroke="#d4933f" stroke-width="2.2" stroke-linecap="round"/></svg>
+
+          <div class="letter-content">
+            <svg class="letter-crown" width="38" height="26" viewBox="0 0 64 46" fill="none">
+              <path d="M8 36L4 12L20 23L32 6L44 23L60 12L56 36H8Z" stroke="#d41c74" stroke-width="3.2" fill="rgba(255, 79, 163, 0.15)" stroke-linejoin="round"/>
+            </svg>
+
+            <div class="letter-greeting">Gabriela,</div>
+
+            <div class="letter-body">
+              <p>
+                Você é o meu maior presente, a razão do meu sorriso e o motivo dos meus melhores dias.
+                Eu te amo com todo o meu coração e sou completamente apaixonado por você, hoje, amanhã e sempre!
+                Não só hoje, mas <strong>todos os dias</strong>, você não é só a minha namorada... você é a minha princesa!
+              </p>
+              <p>
+                Que Deus continue te abençoando, te protegendo e te dando tudo o que você merece.
+                Você é linda, especial, única e mora para sempre no meu coração.
+              </p>
+            </div>
+
+            <div class="letter-highlight">♡ Feliz Dia da Princesa, meu amor! ♡</div>
+
+            <div class="letter-divider">❤</div>
+
+            <div class="letter-sign">Com todo o meu amor,</div>
+            <div class="letter-name">Kayko</div>
+          </div>
+        </div>
+
+        <!-- Laço de cetim central -->
+        <svg class="book-ribbon-bow" width="140" height="72" viewBox="0 0 140 72" fill="none">
+          <path d="M68 28L40 68L52 62L66 36" fill="#d41872"/>
+          <path d="M72 28L100 68L88 62L74 36" fill="#e82e89"/>
+          <path d="M68 24C40 4 12 10 16 30C20 46 48 38 68 28Z" fill="url(#bowGrad)" stroke="#ffb3d9" stroke-width="1.5"/>
+          <path d="M72 24C100 4 128 10 124 30C120 46 92 38 72 28Z" fill="url(#bowGrad)" stroke="#ffb3d9" stroke-width="1.5"/>
+          <path d="M70 36C70 36 58 29 58 21C58 17 61 14 65 14C67.5 14 69 15.5 70 17.5C71 15.5 72.5 14 75 14C79 14 82 17 82 21C82 29 70 36 70 36Z" fill="#e60067" stroke="#f7cb77" stroke-width="2"/>
+          <defs>
+            <linearGradient id="bowGrad" x1="16" y1="8" x2="124" y2="44" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ff85c1"/>
+              <stop offset="0.5" stop-color="#e1267f"/>
+              <stop offset="1" stop-color="#ff6eb4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Rosas nos cantos do livro -->
+        <svg class="book-roses-bl" viewBox="0 0 120 110" fill="none">
+          <path d="M15 95 C5 75, 25 55, 45 70 C35 88, 25 98, 15 95Z" fill="#3a7d44"/>
+          <path d="M75 95 C95 85, 100 60, 75 65 C65 78, 65 92, 75 95Z" fill="#2d6636"/>
+          <circle cx="42" cy="70" r="26" fill="#d81b60"/>
+          <circle cx="42" cy="70" r="19" fill="#ec407a"/>
+          <path d="M32 68 C32 58, 52 58, 52 68 C52 78, 36 80, 36 68" stroke="#880e4f" stroke-width="2.5" fill="none"/>
+          <circle cx="72" cy="82" r="18" fill="#c2185b"/>
+          <circle cx="72" cy="82" r="12" fill="#f06292"/>
+          <circle cx="24" cy="48" r="16" fill="#e91e63"/>
+          <circle cx="24" cy="48" r="10" fill="#f48fb1"/>
+        </svg>
+
+        <svg class="book-roses-br" viewBox="0 0 120 110" fill="none">
+          <path d="M15 95 C5 75, 25 55, 45 70 C35 88, 25 98, 15 95Z" fill="#3a7d44"/>
+          <path d="M75 95 C95 85, 100 60, 75 65 C65 78, 65 92, 75 95Z" fill="#2d6636"/>
+          <circle cx="42" cy="70" r="26" fill="#d81b60"/>
+          <circle cx="42" cy="70" r="19" fill="#ec407a"/>
+          <path d="M32 68 C32 58, 52 58, 52 68 C52 78, 36 80, 36 68" stroke="#880e4f" stroke-width="2.5" fill="none"/>
+          <circle cx="72" cy="82" r="18" fill="#c2185b"/>
+          <circle cx="72" cy="82" r="12" fill="#f06292"/>
+          <circle cx="24" cy="48" r="16" fill="#e91e63"/>
+          <circle cx="24" cy="48" r="10" fill="#f48fb1"/>
+        </svg>
+      </div>
+
+      <div class="love-actions">
+        <button class="btn-love" id="btnMoreHearts">💖 Enviar chuva de corações</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // =========================================================================
+    // CONFIGURAÇÃO DE HORÁRIO: Quarta-feira, 18/11/2026 às 00:02:00 (Brasília)
+    // =========================================================================
+    const UNLOCK_TIME = new Date('2026-11-18T00:02:00-03:00').getTime();
+
+    // Modo de teste via URL (?teste=1) ou tocando 5 vezes na coroa do topo
+    const urlParams = new URLSearchParams(window.location.search);
+    let previewUnlocked = urlParams.get('teste') === '1';
+
+    let isUnlocked = false;
+    let isOpened = false;
+    let crownClicks = 0;
+
+    const countdownBox = document.getElementById('countdownBox');
+    const countdownTimer = document.getElementById('countdownTimer');
+    const lockBadge = document.getElementById('lockBadge');
+    const tapHintText = document.getElementById('tapHintText');
+    const lockedToast = document.getElementById('lockedToast');
+    const envelopeScene = document.getElementById('envelopeScene');
+    const envelopeStage = document.getElementById('envelope-stage');
+    const bookStage = document.getElementById('book-stage');
+    const secretCrown = document.getElementById('secretCrown');
+    const btnMoreHearts = document.getElementById('btnMoreHearts');
+
+    // Criar brilhos bokeh no fundo
+    const magicBg = document.getElementById('magicBg');
+    for (let i = 0; i < 18; i++) {
+      const b = document.createElement('div');
+      b.className = 'bokeh';
+      const size = 40 + Math.random() * 110;
+      b.style.width = size + 'px';
+      b.style.height = size + 'px';
+      b.style.left = Math.random() * 100 + '%';
+      b.style.top = Math.random() * 100 + '%';
+      b.style.animationDelay = (Math.random() * 8) + 's';
+      b.style.animationDuration = (8 + Math.random() * 10) + 's';
+      magicBg.appendChild(b);
+    }
+
+    // Atualizar contagem regressiva
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = UNLOCK_TIME - now;
+
+      if (diff <= 0 || previewUnlocked) {
+        if (!isUnlocked) {
+          isUnlocked = true;
+          countdownBox.classList.add('unlocked');
+          lockBadge.classList.add('hidden');
+          tapHintText.textContent = 'Toque no envelope para abrir...';
+          lockedToast.textContent = '';
+          spawnHeartBurst(window.innerWidth / 2, window.innerHeight / 2, 18);
+        }
+        return;
+      }
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const pad = (n) => String(n).padStart(2, '0');
+      countdownTimer.textContent = `${pad(hours)}h : ${pad(minutes)}m : ${pad(seconds)}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Atalho secreto para o Kayko testar antes das 00:02 (tocar 5x na coroa do topo)
+    secretCrown.addEventListener('click', (e) => {
+      spawnHeartBurst(e.clientX, e.clientY, 6);
+      crownClicks++;
+      if (crownClicks >= 5 && !isUnlocked) {
+        previewUnlocked = true;
+        updateCountdown();
+        lockedToast.textContent = '✨ Modo prévia liberado para teste!';
+      }
+    });
+
+    // Abrir Envelope
+    envelopeScene.addEventListener('click', (e) => {
+      const rect = envelopeScene.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+
+      if (!isUnlocked) {
+        envelopeScene.classList.remove('shake');
+        void envelopeScene.offsetWidth;
+        envelopeScene.classList.add('shake');
+        lockedToast.textContent = 'Calma, minha princesa 💖 Só abre às 00:02 de quarta-feira!';
+        spawnHeartBurst(cx, cy, 8);
+        return;
+      }
+
+      if (isOpened) return;
+      isOpened = true;
+
+      // Tocar melodia suave de caixinha de música
+      playMusicBoxMelody();
+
+      // Animação da aba abrindo + explosão de corações rosas
+      envelopeScene.classList.add('opening');
+      spawnHeartBurst(cx, cy, 42);
+
+      setTimeout(() => {
+        envelopeStage.classList.add('hidden-stage');
+        bookStage.classList.add('revealed');
+        requestAnimationFrame(() => {
+          bookStage.classList.add('animate-in');
+          spawnHeartBurst(window.innerWidth / 2, window.innerHeight * 0.45, 32);
+        });
+      }, 950);
+    });
+
+    // Botão de chuva de corações dentro do livro
+    btnMoreHearts.addEventListener('click', () => {
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          spawnHeartBurst(
+            Math.random() * window.innerWidth,
+            window.innerHeight * (0.3 + Math.random() * 0.5),
+            14
+          );
+        }, i * 160);
+      }
+      playMusicBoxChime();
+    });
+
+    // =========================================================================
+    // ANIMAÇÃO DE CORAÇÕES ROSAS AO MOVIMENTAR O CARTÃO / ENVELOPE / TELA
+    // =========================================================================
+    const heartSymbols = ['💖', '💗', '💓', '💕', '🌸', '✨', '🩷'];
+    let lastSpawn = 0;
+
+    function spawnSingleHeart(x, y, forceBig = false) {
+      const el = document.createElement('span');
+      el.className = 'floating-heart';
+      el.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+      const size = forceBig ? (20 + Math.random() * 20) : (14 + Math.random() * 14);
+      const dx = (Math.random() - 0.5) * (forceBig ? 220 : 90);
+      const dy = -(60 + Math.random() * (forceBig ? 180 : 90));
+      const rot = (Math.random() - 0.5) * 60;
+      const dur = 1 + Math.random() * 0.9;
+
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      el.style.fontSize = size + 'px';
+      el.style.setProperty('--dx', dx + 'px');
+      el.style.setProperty('--dy', dy + 'px');
+      el.style.setProperty('--rot', rot + 'deg');
+      el.style.setProperty('--dur', dur + 's');
+      el.style.setProperty('--sc', (0.9 + Math.random() * 0.6).toFixed(2));
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), dur * 1000);
+    }
+
+    function spawnHeartBurst(x, y, count = 20) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          spawnSingleHeart(
+            x + (Math.random() - 0.5) * 30,
+            y + (Math.random() - 0.5) * 30,
+            true
+          );
+        }, i * 18);
+      }
+    }
+
+    function handlePointerMove(x, y) {
+      const now = performance.now();
+      if (now - lastSpawn > 38) {
+        lastSpawn = now;
+        spawnSingleHeart(x, y, false);
+        if (Math.random() > 0.5) {
+          spawnSingleHeart(x + (Math.random() - 0.5) * 18, y + (Math.random() - 0.5) * 18, false);
+        }
+      }
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      handlePointerMove(e.clientX, e.clientY);
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    // =========================================================================
+    // MELODIA SUAVE DE CAIXINHA DE MÚSICA (100% EM CÓDIGO, SEM ARQUIVO EXTERNO)
+    // =========================================================================
+    let audioCtx = null;
+
+    function playNote(freq, startTime, duration) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, startTime);
+
+      gain.gain.setValueAtTime(0.001, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.12, startTime + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0008, startTime + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration);
+    }
+
+    function playMusicBoxMelody() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
+        const now = audioCtx.currentTime;
+        // Notas românticas suaves
+        const notes = [
+          [523.25, 0.0, 0.7],  // Dó5
+          [659.25, 0.35, 0.7], // Mi5
+          [783.99, 0.7, 0.8],  // Sol5
+          [1046.5, 1.05, 1.1], // Dó6
+          [987.77, 1.55, 0.8], // Si5
+          [880.00, 1.95, 0.8], // Lá5
+          [783.99, 2.35, 1.2], // Sol5
+          [659.25, 2.9, 0.7],  // Mi5
+          [783.99, 3.25, 0.7], // Sol5
+          [880.00, 3.6, 0.9],  // Lá5
+          [1046.5, 4.05, 1.5]  // Dó6
+        ];
+        notes.forEach(([f, t, d]) => playNote(f, now + t, d));
+      } catch (err) {}
+    }
+
+    function playMusicBoxChime() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!audioCtx) audioCtx = new AudioContext();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const now = audioCtx.currentTime;
+        playNote(783.99, now, 0.6);
+        playNote(987.77, now + 0.15, 0.7);
+        playNote(1174.66, now + 0.3, 0.9);
+      } catch (err) {}
+    }
+  </script>
+</body>
+</html>
