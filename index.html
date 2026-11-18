@@ -694,6 +694,20 @@
       .env-roses-left { left: -16px; }
       .env-roses-right { right: -16px; }
     }
+
+    /* Acabamento real: rosa neon, céu encantado e revelação suave */
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+      background:radial-gradient(ellipse at 17% 15%,rgba(255,90,176,.24),transparent 39%),
+      radial-gradient(ellipse at 88% 79%,rgba(239,67,165,.2),transparent 42%); }
+    .royal-header { filter:drop-shadow(0 0 14px rgba(255,99,173,.35)); }
+    .envelope-scene:not(.opening) { animation: levitate 3.4s ease-in-out infinite; }
+    @keyframes levitate { 0%,100% {translate:0 0} 50% {translate:0 -9px} }
+    .envelope-scene:focus-visible { outline:3px solid #ffe1f1; outline-offset:12px; border-radius:18px; }
+    .storybook { animation: magicGlow 4s ease-in-out infinite alternate; }
+    @keyframes magicGlow {from{box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 25px #ff4fa380}to{box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 60px #ff4fa3b3}}
+    .photo-frame-inner img { object-position:center 20%; }
+    @media (prefers-reduced-motion:reduce){.envelope-scene:not(.opening),.storybook{animation:none}}
+
   </style>
 </head>
 <body>
@@ -760,7 +774,7 @@
       </div>
 
       <!-- Envelope Interativo -->
-      <div class="envelope-scene" id="envelopeScene">
+      <div class="envelope-scene" id="envelopeScene" role="button" tabindex="0" aria-label="Abrir o envelope da Gabriela">
         <!-- Rosas à esquerda e direita -->
         <svg class="env-roses-left" viewBox="0 0 120 110" fill="none">
           <path d="M15 95 C5 75, 25 55, 45 70 C35 88, 25 98, 15 95Z" fill="#3a7d44"/>
@@ -825,7 +839,7 @@
     </section>
 
     <!-- ================= ETAPA 2: LIVRO REVELADO ================= -->
-    <section id="book-stage">
+    <section id="book-stage" aria-label="Carta especial para Gabriela">
       <div class="storybook">
 
         <!-- PÁGINA ESQUERDA: FOTO DA PRINCESA -->
@@ -842,15 +856,15 @@
             </svg>
 
             <div class="photo-frame-inner">
-              <!-- Salve a foto dela de princesa na mesma pasta com o nome gabriela-princesa.jpg -->
+              <!-- Retrato de princesa: revelado somente após abrir o envelope. -->
               <img
-                src="gabriela-princesa.jpg"
+                src="assets/gabriela-princesa.webp" loading="lazy"
                 alt="Minha Princesa Gabriela"
                 onerror="this.style.display='none'; document.getElementById('photoFallback').style.display='flex';"
               />
               <div class="photo-fallback" id="photoFallback">
                 <span style="font-size: 2.8rem;">👸🏻💖</span>
-                <span>Coloque a foto de princesa dela na mesma pasta com o nome:<br><strong>gabriela-princesa.jpg</strong></span>
+                <span>Retrato de princesa indisponível. Verifique a pasta assets.</span>
               </div>
             </div>
           </div>
@@ -949,7 +963,7 @@
 
     // Modo de teste via URL (?teste=1) ou tocando 5 vezes na coroa do topo
     const urlParams = new URLSearchParams(window.location.search);
-    let previewUnlocked = urlParams.get('teste') === '1';
+    let previewUnlocked = urlParams.get('teste') === '1' || urlParams.get('preview') === '1';
 
     let isUnlocked = false;
     let isOpened = false;
@@ -1018,6 +1032,11 @@
         updateCountdown();
         lockedToast.textContent = '✨ Modo prévia liberado para teste!';
       }
+    });
+
+    // Acessibilidade: Enter ou espaço também abrem o envelope
+    envelopeScene.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); envelopeScene.click(); }
     });
 
     // Abrir Envelope

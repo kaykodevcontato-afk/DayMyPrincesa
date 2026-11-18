@@ -1,0 +1,7 @@
+Cartão Dia da Princesa — Gabriela, com amor de Kayko
+
+Abra index.html no navegador ou publique index.html e pasta assets no GitHub Pages.
+Horário: 18/11/2026, 00h02, fuso -03:00.
+Para testar: adicione ?preview=1 ou ?teste=1 à URL.
+A foto e a carta são exibidas somente depois de abrir o envelope.
+A verificação da hora usa o relógio do aparelho e não é proteção contra alteração manual.
