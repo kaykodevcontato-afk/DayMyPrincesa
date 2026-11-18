@@ -4,10 +4,12 @@ Publique index.html e a pasta assets no mesmo repositório do GitHub Pages.
 Abertura do envelope: 18/11/2026 às 00h02 (-03:00).
 Teste do envelope antes da hora: ?preview=1 ou ?teste=1.
 
-NOVA SURPRESA: abaixo do envelope há um desafio com a data em que vocês se conheceram.
+NOVA SURPRESA: abaixo do envelope há um desafio com a data em que vocês começaram a namorar.
 A mensagem e o contador de dias só aparecem ao digitar 30/03/2026.
 A data NÃO aparece no desafio antes do acerto; a dica permanece romântica.
 Esse desbloqueio é apenas visual: a data e o texto existem no HTML/JavaScript e podem ser vistos por quem inspecionar o código.
 O relógio do dispositivo determina o desbloqueio do envelope.
 
-Atualização: versículo 1 Coríntios 13:7 e linha do tempo interativa das bodas de namoro, contadas desde 30/04/2026. As bodas aparecem apenas depois de abrir o envelope.
+Atualização: versículo 1 Coríntios 13:7 e linha do tempo interativa das bodas de namoro, contadas desde 30/03/2026. As bodas aparecem apenas depois de abrir o envelope.
+
+Correção: namoro iniciado em 30/03/2026. As bodas completadas até 18/11/2026 são 7 (a sétima em 30/10/2026).

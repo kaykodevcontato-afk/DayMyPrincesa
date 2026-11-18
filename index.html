@@ -933,12 +933,12 @@
         </div>
       </div>
 
-      <!-- Segunda surpresa: a dedicatória só aparece após acertar a data do primeiro encontro. -->
+      <!-- Segunda surpresa: a dedicatória só aparece após acertar a data do início do namoro. -->
       <section class="our-story" aria-label="Surpresa da nossa história" id="ourStory">
         <div id="storyChallenge">
           <div class="story-eyebrow">♡ Uma segunda surpresa só para você ♡</div>
           <h2 class="story-title">Você se lembra do nosso primeiro dia?</h2>
-          <p class="story-question">Minha princesa, existe uma data que mudou a minha vida para sempre. Qual foi o dia em que nos conhecemos? 💗</p>
+          <p class="story-question">Minha princesa, existe uma data que mudou a minha vida para sempre. Qual foi o dia em que começamos a namorar? 💗</p>
           <form id="storyDateForm" class="story-date-form" autocomplete="off">
             <label for="storyDateInput">Digite a nossa data especial</label>
             <div class="story-date-row">
@@ -949,9 +949,9 @@
           </form>
         </div>
         <div id="storyReveal" class="story-reveal" hidden>
-          <div class="story-eyebrow">Nossa história começou em 30/03/2026</div>
+          <div class="story-eyebrow">Nosso namoro começou em 30/03/2026</div>
           <h2 class="story-title">O dia em que encontrei minha princesa</h2>
-          <p class="story-text">Gabriela, desde que nossos caminhos se cruzaram, em 30 de março, minha vida ganhou mais cor e meu coração encontrou ainda mais motivos para sorrir. Cada dia que passa, sou mais apaixonado por você. E, se eu pudesse voltar àquele dia, escolheria conhecer você mil vezes. Eu te amo, minha princesa! 💗</p>
+          <p class="story-text">Gabriela, desde que começamos a namorar, em 30 de março de 2026, minha vida ganhou mais cor e meu coração encontrou ainda mais motivos para sorrir. A cada dia sou mais apaixonado por você. Se eu pudesse voltar àquele momento, escolheria viver essa história com você mil vezes. Eu te amo, minha princesa! 💗</p>
           <span class="story-days" id="storyDays">Nossa história continua a cada dia ♡</span>
           <p class="story-signature">Com amor, Kayko ♡</p>
         </div>
@@ -1083,7 +1083,7 @@
         <cite>1 Coríntios 13:7</cite>
       </aside>
       <section class="bodas-section" aria-labelledby="bodasTitle">
-        <div class="bodas-kicker">♡ Gabriela &amp; Kayko · Desde 30/04/2026 ♡</div>
+        <div class="bodas-kicker">♡ Gabriela &amp; Kayko · Namorando desde 30/03/2026 ♡</div>
         <h2 id="bodasTitle">Bodas de namoro que já passamos juntos</h2>
         <p class="bodas-description">Cada mês contigo tem seu próprio encanto, minha princesa. Toque em cada lembrança para descobrir um pedacinho do meu amor. 💕</p>
         <div id="bodasTimeline" class="bodas-timeline" aria-label="Linha do tempo das nossas bodas de namoro"></div>
@@ -1164,7 +1164,7 @@
       }
     });
 
-    // Contador de dias desde o primeiro encontro (data civil de Pernambuco).
+    // Contador de dias desde o início do namoro (data civil de Pernambuco).
     // Usa America/Recife para manter a data correta mesmo se a página for vista em outra região.
     const storyDays = document.getElementById('storyDays');
     const storyStartUTC = Date.UTC(2026, 2, 30);
@@ -1175,13 +1175,13 @@
       const val = name => Number(parts.find(p => p.type === name).value);
       const dayUTC = Date.UTC(val('year'), val('month') - 1, val('day'));
       const days = Math.max(0, Math.floor((dayUTC - storyStartUTC) / 86400000));
-      storyDays.textContent = `${days} ${days === 1 ? 'dia' : 'dias'} desde que nos conhecemos · E contando... 💕`;
+      storyDays.textContent = `${days} ${days === 1 ? 'dia' : 'dias'} desde que começamos a namorar · E contando... 💕`;
     }
     updateStoryDays();
     setInterval(updateStoryDays, 60 * 1000);
 
 
-    // Nomes simbólicos populares; as datas são calculadas desde 30/04/2026.
+    // Nomes simbólicos populares; as bodas são calculadas desde 30/03/2026.
     // O dia local de Recife define quais bodas já ocorreram.
     const bodas = [
       {month:1, name:'Bodas de Beijinhos', emoji:'💋', message:'No nosso primeiro mês, descobri como é bom ter o seu carinho na minha vida.'},
@@ -1207,7 +1207,7 @@
       const today = localDateParts();
       const todayKey = today.year * 10000 + today.month * 100 + today.day;
       const completed = bodas.filter(boda => {
-        const date = new Date(Date.UTC(2026,3+boda.month,30));
+        const date = new Date(Date.UTC(2026,2+boda.month,30));
         return (date.getUTCFullYear()*10000 + (date.getUTCMonth()+1)*100 + date.getUTCDate()) <= todayKey;
       });
       bodasTimeline.replaceChildren();
@@ -1219,7 +1219,7 @@
         return;
       }
       completed.forEach(boda => {
-        const date = new Date(Date.UTC(2026, 3+boda.month, 30));
+        const date = new Date(Date.UTC(2026, 2+boda.month, 30));
         const dateText = `${String(date.getUTCDate()).padStart(2,'0')}/${String(date.getUTCMonth()+1).padStart(2,'0')}/${date.getUTCFullYear()}`;
         const entry = document.createElement('div');
         entry.className = 'boda-entry';
