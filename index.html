@@ -708,6 +708,107 @@
     .photo-frame-inner img { object-position:center 20%; }
     @media (prefers-reduced-motion:reduce){.envelope-scene:not(.opening),.storybook{animation:none}}
 
+
+    /* Nossa história: dedicatória visível antes de abrir o envelope */
+    .envelope-inscription {
+      position: absolute;
+      bottom: 16px;
+      left: 18px;
+      right: 18px;
+      z-index: 5;
+      pointer-events: none;
+      color: #fff7fc;
+      font-family: 'Lora', serif;
+      font-size: clamp(0.67rem, 2.4vw, 0.84rem);
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: .025em;
+      text-shadow: 0 2px 8px #8b124a, 0 0 7px #a9075f;
+    }
+    .our-story {
+      width: min(590px, 94vw);
+      position: relative;
+      padding: 20px 24px 18px;
+      background: linear-gradient(145deg, rgba(255,218,238,.19), rgba(107,8,65,.7));
+      border: 1.5px solid rgba(255,199,226,.8);
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(250,69,149,.25), inset 0 0 28px rgba(255,150,203,.08);
+      backdrop-filter: blur(9px);
+    }
+    .our-story::before { content: '♡'; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+      padding: 0 12px; color:#ffd6ec; font-size: 24px; text-shadow: 0 0 12px #ff5ea7; }
+    .story-eyebrow { color: #ffe1f2; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; }
+    .story-title { font-family: 'Great Vibes', cursive; font-weight: 400;
+      font-size: clamp(1.9rem, 5.7vw, 2.45rem); color: #fff0f8; margin: 5px 0 3px;
+      text-shadow: 0 0 13px #ff66b5; }
+    .story-text { font: italic clamp(.88rem,2.65vw,.98rem)/1.7 'Lora', serif; color:#ffe6f2; }
+    .story-days { display:inline-block; margin-top:12px; padding:7px 16px; border-radius:50px;
+      color:#fff; font-size:.84rem; background:rgba(228,38,121,.5); border:1px solid rgba(255,186,222,.65); }
+    @media (max-width:430px) { .our-story { padding: 19px 16px 15px; } .envelope-inscription {bottom:12px;} }
+
+
+    /* Desafio de data: a dedicatória permanece oculta até acertar. */
+    .story-question { font: italic .96rem/1.7 'Lora',serif; color:#ffe6f2; margin: 7px 0 14px; }
+    .story-date-form { display:flex; flex-direction:column; gap:9px; align-items:center; }
+    .story-date-form label { font-size:.83rem; color:#ffe4f2; }
+    .story-date-row { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; width:100%; }
+    .story-date-row input { min-width:0; width:175px; max-width:100%; text-align:center; letter-spacing:.1em; font:600 1rem 'Poppins',sans-serif;
+      border:2px solid #ffc2e0; border-radius:13px; background:#fff3fa; color:#842250; padding:11px 13px; outline-offset:3px; }
+    .story-unlock-button { border:1.5px solid #ffe0f0; background:linear-gradient(125deg,#ff63ad,#cb146f);
+      border-radius:13px; padding:11px 17px; color:white; font:600 .87rem 'Poppins',sans-serif;
+      box-shadow:0 5px 14px #660d4d66; cursor:pointer; }
+    .story-unlock-button:focus-visible,.story-date-row input:focus-visible { outline:3px solid #fff5a9; }
+    .story-feedback { font-size:.78rem; color:#ffe4f2; min-height:18px; }
+    .story-feedback.error { color:#fff1b5; }
+    .story-reveal[hidden] { display:none !important; }
+    .story-reveal { animation:storyAppear .85s ease-out both; }
+    .story-signature { font-family:'Great Vibes',cursive; font-size:1.75rem; margin-top:8px; }
+    @keyframes storyAppear { from {opacity:0; transform:translateY(18px) scale(.95)} to {opacity:1; transform:none} }
+
+
+    /* Versículo e linha do tempo das bodas, visíveis após abrir a carta */
+    .faith-note { margin: 22px auto 6px; max-width: 800px; padding: 22px 24px;
+      text-align:center; border:1px solid #ffd9ad; border-radius:23px;
+      background:linear-gradient(130deg,rgba(104,15,69,.88),rgba(197,34,113,.75));
+      box-shadow:0 0 22px #fa69ae50, inset 0 0 20px #ffb4d226; }
+    .faith-note .faith-icon {font-size:1.7rem; margin-bottom:5px}
+    .faith-note blockquote { font:italic clamp(1.04rem,3vw,1.3rem)/1.7 'Lora',serif;
+      color:#fff5f9; margin:8px 0 6px; }
+    .faith-note cite { font:600 .77rem 'Poppins',sans-serif; color:#ffe5a3; font-style:normal; }
+    .bodas-section { margin:24px auto 0; width:100%; max-width:860px; text-align:center;
+      padding:24px clamp(13px,3vw,30px); border-radius:27px; border:2px solid #ffabd7;
+      background:linear-gradient(150deg,rgba(91,9,63,.95),rgba(160,25,100,.87));
+      box-shadow:0 14px 35px #15001999,0 0 30px #f65bb448; }
+    .bodas-kicker { color:#ffe9b5; font-size:.74rem; letter-spacing:.15em; text-transform:uppercase; }
+    .bodas-section h2 {font:400 clamp(2rem,5.7vw,3.1rem) 'Great Vibes',cursive;
+      color:#ffe8f2; text-shadow:0 0 16px #f952a3; margin:7px 0; }
+    .bodas-description {font:italic .95rem/1.7 'Lora',serif; color:#ffe1ef; max-width:610px; margin:0 auto 20px;}
+    .bodas-timeline {position:relative; display:grid; gap:14px; text-align:left; max-width:680px; margin:0 auto;}
+    .bodas-timeline::before {content:''; position:absolute; width:3px; top:12px; bottom:12px; left:16px;
+      background:linear-gradient(#ffe0a2,#ff79b8,#ffe0a2); box-shadow:0 0 9px #ff69ae;}
+    .boda-entry {position:relative; padding-left:43px;}
+    .boda-entry::before {content:'♥'; position:absolute; top:21px; left:5px; width:25px;height:25px;
+      display:grid;place-items:center;border:1.5px solid #fff1ce;border-radius:50%;
+      background:#d3287c;color:white;box-shadow:0 0 12px #ff5caa;z-index:1;font-size:13px;}
+    .boda-card {display:block; padding:13px 17px; border-radius:17px; border:1px solid #ffc4e3;
+      background:linear-gradient(110deg,#fff1f9,#ffcee8); color:#80224f;
+      box-shadow:0 5px 15px #410c3344; cursor:pointer;}
+    .boda-card:focus-visible {outline:3px solid #ffe49b;outline-offset:3px;}
+    .boda-card summary {cursor:pointer; list-style:none; display:flex;gap:10px; align-items:center;}
+    .boda-card summary::-webkit-details-marker {display:none}
+    .boda-emoji {font-size:1.65rem;flex:none}
+    .boda-details {flex:1; min-width:0}
+    .boda-name {display:block;font-weight:600;font-size:.94rem}
+    .boda-date {display:block;color:#9a5071;font-size:.75rem;margin-top:3px}
+    .boda-card summary::after {content:'⌄';color:#ad2b72;font-size:1.5rem;line-height:1}
+    .boda-card[open] summary::after {content:'⌃'}
+    .boda-message {border-top:1px solid #e7a5c4;margin-top:12px;padding-top:10px;
+      font:italic .88rem/1.7 'Lora',serif;color:#7d2454;}
+    .bodas-footer {margin-top:18px;color:#ffe5f3;font:italic .9rem/1.6 'Lora',serif}
+    @media (max-width:430px) {.boda-entry{padding-left:36px}.bodas-timeline::before{left:12px}
+      .boda-entry::before{left:1px}.boda-card{padding:12px}.bodas-section{padding:20px 12px}}
+
   </style>
 </head>
 <body>
@@ -802,6 +903,7 @@
 
         <div class="envelope-body">
           <div class="envelope-pocket"></div>
+          <span class="envelope-inscription">Uma data especial guarda outro pedacinho do meu coração ♡</span>
 
           <!-- Aba superior -->
           <div class="envelope-flap">
@@ -830,6 +932,30 @@
           </div>
         </div>
       </div>
+
+      <!-- Segunda surpresa: a dedicatória só aparece após acertar a data do primeiro encontro. -->
+      <section class="our-story" aria-label="Surpresa da nossa história" id="ourStory">
+        <div id="storyChallenge">
+          <div class="story-eyebrow">♡ Uma segunda surpresa só para você ♡</div>
+          <h2 class="story-title">Você se lembra do nosso primeiro dia?</h2>
+          <p class="story-question">Minha princesa, existe uma data que mudou a minha vida para sempre. Qual foi o dia em que nos conhecemos? 💗</p>
+          <form id="storyDateForm" class="story-date-form" autocomplete="off">
+            <label for="storyDateInput">Digite a nossa data especial</label>
+            <div class="story-date-row">
+              <input id="storyDateInput" type="text" inputmode="numeric" placeholder="DD/MM/AAAA" maxlength="10" required aria-describedby="storyFeedback" />
+              <button type="submit" class="story-unlock-button">Desbloquear 💖</button>
+            </div>
+            <p class="story-feedback" id="storyFeedback" role="status" aria-live="polite">Acertando a data, uma mensagem de amor será revelada...</p>
+          </form>
+        </div>
+        <div id="storyReveal" class="story-reveal" hidden>
+          <div class="story-eyebrow">Nossa história começou em 30/03/2026</div>
+          <h2 class="story-title">O dia em que encontrei minha princesa</h2>
+          <p class="story-text">Gabriela, desde que nossos caminhos se cruzaram, em 30 de março, minha vida ganhou mais cor e meu coração encontrou ainda mais motivos para sorrir. Cada dia que passa, sou mais apaixonado por você. E, se eu pudesse voltar àquele dia, escolheria conhecer você mil vezes. Eu te amo, minha princesa! 💗</p>
+          <span class="story-days" id="storyDays">Nossa história continua a cada dia ♡</span>
+          <p class="story-signature">Com amor, Kayko ♡</p>
+        </div>
+      </section>
 
       <div class="tap-hint" id="tapHint">
         <span>👆</span>
@@ -949,6 +1075,21 @@
         </svg>
       </div>
 
+
+      <!-- Versículo e bodas ficam dentro da etapa revelada após abrir o envelope. -->
+      <aside class="faith-note" aria-label="Versículo sobre o amor">
+        <div class="faith-icon" aria-hidden="true">📖 💗</div>
+        <blockquote>“O amor tudo sofre, tudo crê, tudo espera, tudo suporta.”</blockquote>
+        <cite>1 Coríntios 13:7</cite>
+      </aside>
+      <section class="bodas-section" aria-labelledby="bodasTitle">
+        <div class="bodas-kicker">♡ Gabriela &amp; Kayko · Desde 30/04/2026 ♡</div>
+        <h2 id="bodasTitle">Bodas de namoro que já passamos juntos</h2>
+        <p class="bodas-description">Cada mês contigo tem seu próprio encanto, minha princesa. Toque em cada lembrança para descobrir um pedacinho do meu amor. 💕</p>
+        <div id="bodasTimeline" class="bodas-timeline" aria-label="Linha do tempo das nossas bodas de namoro"></div>
+        <p class="bodas-footer">Não importa quantos meses passem: eu escolheria você em cada um deles. Com amor, Kayko. ♡</p>
+      </section>
+
       <div class="love-actions">
         <button class="btn-love" id="btnMoreHearts">💖 Enviar chuva de corações</button>
       </div>
@@ -994,6 +1135,111 @@
       b.style.animationDuration = (8 + Math.random() * 10) + 's';
       magicBg.appendChild(b);
     }
+
+    // Pequeno desafio romântico independente da abertura do envelope.
+    // Data correta: 30/03/2026. Validação local (não é uma senha segura).
+    const storyDateForm = document.getElementById('storyDateForm');
+    const storyDateInput = document.getElementById('storyDateInput');
+    const storyFeedback = document.getElementById('storyFeedback');
+    const storyChallenge = document.getElementById('storyChallenge');
+    const storyReveal = document.getElementById('storyReveal');
+    storyDateInput.addEventListener('input', () => {
+      const digits = storyDateInput.value.replace(/\D/g, '').slice(0, 8);
+      storyDateInput.value = [digits.slice(0, 2), digits.slice(2, 4), digits.slice(4)].filter(Boolean).join('/');
+      storyFeedback.classList.remove('error');
+    });
+    storyDateForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const digits = storyDateInput.value.replace(/\D/g, '');
+      if (digits === '30032026') {
+        storyChallenge.hidden = true;
+        storyReveal.hidden = false;
+        updateStoryDays();
+        const rect = document.getElementById('ourStory').getBoundingClientRect();
+        spawnHeartBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 38);
+      } else {
+        storyFeedback.textContent = 'Ainda não, meu amor! 💗 Pense no dia em que nossa história começou e tente de novo.';
+        storyFeedback.classList.add('error');
+        storyDateInput.focus();
+      }
+    });
+
+    // Contador de dias desde o primeiro encontro (data civil de Pernambuco).
+    // Usa America/Recife para manter a data correta mesmo se a página for vista em outra região.
+    const storyDays = document.getElementById('storyDays');
+    const storyStartUTC = Date.UTC(2026, 2, 30);
+    function updateStoryDays() {
+      const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Recife', year: 'numeric', month: '2-digit', day: '2-digit'
+      }).formatToParts(new Date());
+      const val = name => Number(parts.find(p => p.type === name).value);
+      const dayUTC = Date.UTC(val('year'), val('month') - 1, val('day'));
+      const days = Math.max(0, Math.floor((dayUTC - storyStartUTC) / 86400000));
+      storyDays.textContent = `${days} ${days === 1 ? 'dia' : 'dias'} desde que nos conhecemos · E contando... 💕`;
+    }
+    updateStoryDays();
+    setInterval(updateStoryDays, 60 * 1000);
+
+
+    // Nomes simbólicos populares; as datas são calculadas desde 30/04/2026.
+    // O dia local de Recife define quais bodas já ocorreram.
+    const bodas = [
+      {month:1, name:'Bodas de Beijinhos', emoji:'💋', message:'No nosso primeiro mês, descobri como é bom ter o seu carinho na minha vida.'},
+      {month:2, name:'Bodas de Sorvete', emoji:'🍦', message:'Dois meses e a nossa história ficou ainda mais doce. Adoro dividir a vida com você!'},
+      {month:3, name:'Bodas de Algodão-doce', emoji:'🍬', message:'Três meses de uma felicidade leve e doce, como o sorriso que você me dá.'},
+      {month:4, name:'Bodas de Pipoca', emoji:'🍿', message:'Quatro meses de risadas, conversas e momentos que eu quero guardar para sempre.'},
+      {month:5, name:'Bodas de Chocolate', emoji:'🍫', message:'Cinco meses e continuo me apaixonando pelo seu jeitinho a cada dia.'},
+      {month:6, name:'Bodas de Plumas', emoji:'🪶', message:'Meio ano de namoro, Gabriela! Obrigado por tornar meus dias mais bonitos.'},
+      {month:7, name:'Bodas de Purpurina', emoji:'✨', message:'Nosso amor ganha novos brilhos e novas lembranças para guardar.'},
+      {month:8, name:'Bodas de Pompom', emoji:'🎀', message:'Mais um mês de carinho, parceria e amor.'},
+      {month:9, name:'Bodas de Pirulito', emoji:'🍭', message:'A doçura de ter você ao meu lado é meu presente.'},
+      {month:10, name:'Bodas de Pintinhos', emoji:'🐣', message:'Nosso amor continua crescendo, com cuidado e ternura.'},
+      {month:11, name:'Bodas de Chiclete', emoji:'💞', message:'Onze meses juntinhos na nossa linda história.'},
+      {month:12, name:'Nosso primeiro ano de namoro', emoji:'👑', message:'Um ano da nossa história, e o meu amor por você continua crescendo.'}
+    ];
+    const bodasTimeline = document.getElementById('bodasTimeline');
+    const localDateParts = () => {
+      const parts = new Intl.DateTimeFormat('en-US', {timeZone:'America/Recife',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+      const get = type => Number(parts.find(part => part.type === type).value);
+      return {year:get('year'),month:get('month'),day:get('day')};
+    };
+    function renderBodas() {
+      const today = localDateParts();
+      const todayKey = today.year * 10000 + today.month * 100 + today.day;
+      const completed = bodas.filter(boda => {
+        const date = new Date(Date.UTC(2026,3+boda.month,30));
+        return (date.getUTCFullYear()*10000 + (date.getUTCMonth()+1)*100 + date.getUTCDate()) <= todayKey;
+      });
+      bodasTimeline.replaceChildren();
+      if (!completed.length) {
+        const p = document.createElement('p');
+        p.className = 'bodas-description';
+        p.textContent = 'Nossa primeira boda ainda está chegando. Cada dia contigo já é especial!';
+        bodasTimeline.appendChild(p);
+        return;
+      }
+      completed.forEach(boda => {
+        const date = new Date(Date.UTC(2026, 3+boda.month, 30));
+        const dateText = `${String(date.getUTCDate()).padStart(2,'0')}/${String(date.getUTCMonth()+1).padStart(2,'0')}/${date.getUTCFullYear()}`;
+        const entry = document.createElement('div');
+        entry.className = 'boda-entry';
+        const details = document.createElement('details');
+        details.className = 'boda-card';
+        const summary = document.createElement('summary');
+        const emoji = document.createElement('span'); emoji.className='boda-emoji'; emoji.textContent=boda.emoji;
+        const info = document.createElement('span'); info.className='boda-details';
+        const name = document.createElement('span'); name.className='boda-name'; name.textContent=boda.name;
+        const time = document.createElement('span'); time.className='boda-date'; time.textContent=`${boda.month} ${boda.month===1?'mês':'meses'} de namoro · ${dateText}`;
+        info.append(name,time); summary.append(emoji,info);
+        const message = document.createElement('p'); message.className='boda-message'; message.textContent=boda.message;
+        details.append(summary,message);entry.append(details);bodasTimeline.append(entry);
+        details.addEventListener('toggle', () => {
+          if (details.open) {const rect=details.getBoundingClientRect();spawnHeartBurst(rect.left+rect.width/2,rect.top+rect.height/2,10);}
+        });
+      });
+    }
+    renderBodas();
+    setInterval(renderBodas, 60*60*1000);
 
     // Atualizar contagem regressiva
     function updateCountdown() {
